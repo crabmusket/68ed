@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>68ed</title>
+  <style type="text/css" media="screen">
+    body {
+        overflow: hidden;
+    }
+    
+    #editor { 
+        margin: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+  </style>
+</head>
+<body>
+
+<script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
+
+<pre id="editor">
+****************************************
+*   -- Sample Program --
+*   This program writes a series of
+*   characters from a phrase to PORTB
+*****************************************
+REGBASE equ     $1000
+PORTB   equ     $04
+
+        org     $0000
+
+init:
+        ldx     #phrase
+        ldy     #REGBASE
+loop:
+        ldaa    0,x
+        beq     init
+        staa    PORTB,y
+        inx
+        jmp     loop
+phrase:
+        fcb     "Hello, world!"
+</pre>
+    
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/dark");
+    editor.getSession().setMode("ace/mode/asm68hc11");
+</script>
+
+</body>
+</html>
