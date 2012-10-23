@@ -87,7 +87,7 @@ oop.inherits(Mode, TextMode);
         if (state == "start") {
             var match = line.match(/^.*\:/);
             if (match) {
-                indent = tab;
+                indent = tab + tab;
             }
         }
 
