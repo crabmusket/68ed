@@ -177,7 +177,19 @@ exports.cssText = ".ace-dark .ace_editor {\
 \
 .ace-dark .ace_indent-guide {\
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWMQERH5zzBz5sz/AA5EBAYqeZXWAAAAAElFTkSuQmCC) right repeat-y\
-}";
+}\
+\
+.block0 { background-color: #666600 }\
+.block1 { background-color: #CC0033 }\
+.block2 { background-color: #990066 }\
+.block3 { background-color: #000099 }\
+.block4 { background-color: #0066CC }\
+.block5 { background-color: #006600 }\
+.block6 { background-color: #996600 }\
+.block7 { background-color: #CC3333 }\
+.block8 { background-color: #660066 }\
+.block9 { background-color: #330099 }\
+";
 
 var dom = require("../lib/dom");
 dom.importCssString(exports.cssText, exports.cssClass);

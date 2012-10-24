@@ -198,6 +198,16 @@ exports.cssText = ".ace-light .ace_editor {\
 .ace-light .ace_indent-guide {\
   background: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==\") right repeat-y;\
 }\
+.block0 { background-color: #FFCC00 }\
+.block1 { background-color: #FF6699 }\
+.block2 { background-color: #66CCFF }\
+.block3 { background-color: #33CC33 }\
+.block4 { background-color: #999933 }\
+.block5 { background-color: #FF6600 }\
+.block6 { background-color: #FF9999 }\
+.block7 { background-color: #33CCFF }\
+.block8 { background-color: #99FF99 }\
+.block9 { background-color: #999966 }\
 ";
 
 var dom = require("../lib/dom");

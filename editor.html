@@ -57,6 +57,7 @@ function getColor(i, a) {
     var r = bit(i, 1) + bit(i, 3) * 2 + 1;
     var g = bit(i, 2) + bit(i, 4) * 2 + 1;
     var b = bit(i, 0) + bit(i, 5) * 2 + 1;
+    if (i == 0) a = 0;
     return 'rgba(' +
         r*63 + ',' +
         g*63 + ',' +
@@ -66,13 +67,16 @@ function getColor(i, a) {
 
 function updateBlocks() {
     var block = 0;
-    $(".ace_text-layer").children().each(function() {
-        var text = $(this).text();
+    var lines = editor.getSession().getDocument().getAllLines();
+    for (var i = 0; i < lines.length; i++) {
+        var text = lines[i];
         if (text.match(/^.*\:/)) {
             block += 1;
         }
-        $(this).css('background-color', getColor(block, 0.3));
-    });
+        editor.getSession().$decorations[i] = "";
+        if (block > 0)
+            editor.getSession().addGutterDecoration(i, "block" + (block % 10));
+    }
 }
 
 var editor = ace.edit("editor");
@@ -81,7 +85,9 @@ editor.getSession().setMode("ace/mode/asm68hc11");
 editor.getSession().on("change", function(e) {
     setTimeout(updateBlocks, 0);
 });
-setTimeout(updateBlocks, 1000);
+editor.getSession().on("tokenizerUpdate", function() {
+    setTimeout(updateBlocks, 0);
+});
 </script>
 
 </body>
