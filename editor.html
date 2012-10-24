@@ -18,6 +18,7 @@
         right: 0;
     }
   </style>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 </head>
 <body>
 
@@ -48,9 +49,39 @@ phrase:
 </pre>
     
 <script>
-    var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/dark");
-    editor.getSession().setMode("ace/mode/asm68hc11");
+function bit(i, b) {
+    return i & (1 << b);
+}
+
+function getColor(i, a) {
+    var r = bit(i, 1) + bit(i, 3) * 2 + 1;
+    var g = bit(i, 2) + bit(i, 4) * 2 + 1;
+    var b = bit(i, 0) + bit(i, 5) * 2 + 1;
+    return 'rgba(' +
+        r*63 + ',' +
+        g*63 + ',' +
+        b*63 + ',' +
+        a + ')';
+}
+
+function updateBlocks() {
+    var block = 0;
+    $(".ace_text-layer").children().each(function() {
+        var text = $(this).text();
+        if (text.match(/^.*\:/)) {
+            block += 1;
+        }
+        $(this).css('background-color', getColor(block, 0.3));
+    });
+}
+
+var editor = ace.edit("editor");
+editor.setTheme("ace/theme/dark");
+editor.getSession().setMode("ace/mode/asm68hc11");
+editor.getSession().on("change", function(e) {
+    setTimeout(updateBlocks, 0);
+});
+setTimeout(updateBlocks, 1000);
 </script>
 
 </body>
