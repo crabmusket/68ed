@@ -11077,7 +11077,7 @@ exports.commands = [{
     readOnly: true
 }, {
     name: "gotolineend",
-    bindKey: bindKey("Alt-Right|End", "Command-Right|End|Ctrl-E"),
+    bindKey: bindKey("Alt-Right|End", "Command-Right|End"),
     exec: function(editor) { editor.navigateLineEnd(); },
     multiSelectAction: "forEach",
     readOnly: true
@@ -11198,7 +11198,7 @@ exports.commands = [{
     multiSelectAction: "forEach"
 }, {
     name: "replace",
-    bindKey: bindKey("Ctrl-R", "Command-Option-F"),
+    bindKey: bindKey("Ctrl-E", "Command-Option-F"),
     exec: function(editor) {
         var needle = prompt("Find:", editor.getCopyText());
         if (!needle)

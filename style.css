@@ -1,0 +1,25 @@
+#hint-dialog {
+    position: fixed;
+    z-index: 10;
+    border-radius: 5px;
+    background-color: #ffcc99;
+    font-family: sans-serif;
+    font-size: small;
+}
+
+#hint-dialog h1 {
+    margin: 0;
+    padding: 0;
+}
+
+#hint-dialog #desc {
+    margin: 5px;
+    padding: 0;
+    font-style: italic;
+    font-size: x-small;
+}
+
+#hint-dialog #hint {
+    margin: 5px;
+    padding: 0;
+}
