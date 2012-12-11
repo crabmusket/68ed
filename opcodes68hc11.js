@@ -1,5 +1,6 @@
 opcodes68HC11 = {
 	"ABA": {
+    hint: "Add accumulators B and A, storing the result in A.",
 		macro: "ABA",
 		modes: {
 			INH: [0x1B, 1, 2]
@@ -16,6 +17,7 @@ opcodes68HC11 = {
 		}
 	},
 	"ABX": {
+    hint: "Add the value stored in B to the value in X.",
 		macro: "ABX",
 		modes: {
 			INH: [0x3A, 1, 3]
@@ -32,6 +34,7 @@ opcodes68HC11 = {
 		}
 	},
 	"ABY": {
+    hint: "Add the value stored in B to the value of Y.",
 		macro: "ABY",
 		modes: {
 			INH: [0x183A, 2, 4]
@@ -354,6 +357,7 @@ opcodes68HC11 = {
 		}
 	},
 	"BEQ": {
+    hint: "Branch if the last operation resulted in a value of zero.",
 		macro: "BEQ",
 		modes: {
 			REL: [0x27, 2, 3]
@@ -370,6 +374,7 @@ opcodes68HC11 = {
 		}
 	},
 	"BGE": {
+    hint: "Branch if the last calculation resulted in a value greater than or equal to zero.",
 		macro: "BGE",
 		modes: {
 			REL: [0x2C, 2, 3]
@@ -386,6 +391,7 @@ opcodes68HC11 = {
 		}
 	},
 	"BGT": {
+    hint: "Branch if the last calculation resulted in a value greater than zero.",
 		macro: "BGT",
 		modes: {
 			REL: [0x2E, 2, 3]
@@ -474,6 +480,7 @@ opcodes68HC11 = {
 		}
 	},
 	"BLE": {
+    hint: "Branch if the last calculation had a value less than or equal to zero.",
 		macro: "BLE",
 		modes: {
 			REL: [0x2F, 2, 3]
@@ -522,6 +529,7 @@ opcodes68HC11 = {
 		}
 	},
 	"BLT": {
+    hint: "Branch if the previous calculation had a value less than zero.",
 		macro: "BLT",
 		modes: {
 			REL: [0x2D, 2, 3]
@@ -554,6 +562,7 @@ opcodes68HC11 = {
 		}
 	},
 	"BNE": {
+    hint: "Branch if the last calculation resulted in a non-zero value.",
 		macro: "BNE",
 		modes: {
 			REL: [0x26, 2, 3]
@@ -586,6 +595,7 @@ opcodes68HC11 = {
 		}
 	},
 	"BRA": {
+    hint: "Always branch. Always.",
 		macro: "BRA",
 		modes: {
 			REL: [0x20, 2, 3]
@@ -620,6 +630,7 @@ opcodes68HC11 = {
 		}
 	},
 	"BRN": {
+    hint: "Never branch. This op effectively does nothing.",
 		macro: "BRN",
 		modes: {
 			REL: [0x21, 2, 3]
@@ -672,6 +683,7 @@ opcodes68HC11 = {
 		}
 	},
 	"BSR": {
+    hint: "Branch to a subroutine.",
 		macro: "BSR",
 		modes: {
 			REL: [0x8D, 2, 6]
@@ -720,6 +732,7 @@ opcodes68HC11 = {
 		}
 	},
 	"CBA": {
+    hint: "Compare A to B. In effect, performs A - B.",
 		macro: "CBA",
 		modes: {
 			INH: [0x11, 1, 2]
@@ -752,6 +765,7 @@ opcodes68HC11 = {
 		}
 	},
 	"CLI": {
+    hint: "Clear the interrupt mask (so all interrupts will be enabled).",
 		macro: "CLI",
 		modes: {
 			INH: [0x0E, 1, 2]
@@ -1018,6 +1032,7 @@ opcodes68HC11 = {
 		}
 	},
 	"DECA": {
+    hint: "Decrease the value of accumulator A by one.",
 		macro: "DECA",
 		modes: {
 			INH: [0x4A, 1, 2]
@@ -1034,6 +1049,7 @@ opcodes68HC11 = {
 		}
 	},
 	"DECB": {
+    hint: "Decrease the value of accumulator B by one.",
 		macro: "DECB",
 		modes: {
 			INH: [0x5A, 1, 2]
@@ -1050,6 +1066,7 @@ opcodes68HC11 = {
 		}
 	},
 	"DES": {
+    hint: "Decrement the value of the stack pointer by one.",
 		macro: "DES",
 		modes: {
 			INH: [0x34, 1, 3]
@@ -1066,6 +1083,7 @@ opcodes68HC11 = {
 		}
 	},
 	"DEX": {
+    hint: "Decrement the value of accumulator X by one.",
 		macro: "DEX",
 		modes: {
 			INH: [0x9, 1, 3]
@@ -1082,6 +1100,7 @@ opcodes68HC11 = {
 		}
 	},
 	"DEY": {
+    hint: "Decrement the value of accumulator Y by one.",
 		macro: "DEY",
 		modes: {
 			INH: [0x189, 2, 4]
@@ -1188,6 +1207,7 @@ opcodes68HC11 = {
 		}
 	},
 	"INCA": {
+    hint: "Increase the value of accumulator A by one.",
 		macro: "INCA",
 		modes: {
 			INH: [0x4C, 1, 2]
@@ -1204,6 +1224,7 @@ opcodes68HC11 = {
 		}
 	},
 	"INCB": {
+    hint: "Increase the value of accumulator B by one.",
 		macro: "INCB",
 		modes: {
 			INH: [0x5C, 1, 2]
@@ -1220,6 +1241,7 @@ opcodes68HC11 = {
 		}
 	},
 	"INS": {
+    hint: "Increase the value of the stack pointer by one.",
 		macro: "INS",
 		modes: {
 			INH: [0x31, 1, 3]
@@ -1236,6 +1258,7 @@ opcodes68HC11 = {
 		}
 	},
 	"INX": {
+    hint: "Increase the value of accumulator X by one.",
 		macro: "INX",
 		modes: {
 			INH: [0x8, 1, 3]
@@ -1252,6 +1275,7 @@ opcodes68HC11 = {
 		}
 	},
 	"INY": {
+    hint: "Increase the value of accumulator Y by one.",
 		macro: "INY",
 		modes: {
 			INH: [0x188, 2, 4]
@@ -1268,6 +1292,7 @@ opcodes68HC11 = {
 		}
 	},
 	"JMP": {
+    hint: "Jump execution to somewhere else.",
 		macro: "JMP",
 		modes: {
 			EXT: [0x7E, 3, 3],
@@ -1286,6 +1311,7 @@ opcodes68HC11 = {
 		}
 	},
 	"JSR": {
+    hint: "Jump to a subroutine (works like a function call!).",
 		macro: "JSR",
 		modes: {
 			DIR: [0x9D, 2, 5],
@@ -1305,6 +1331,7 @@ opcodes68HC11 = {
 		}
 	},
 	"LDAA": {
+    hint: "Load data into accumulator A.",
 		macro: "LDAA",
 		modes: {
 			IMM: [0x86, 2, 2],
@@ -1325,6 +1352,7 @@ opcodes68HC11 = {
 		}
 	},
 	"LDAB": {
+    hint: "Load data into accumulator B.",
 		macro: "LDAB",
 		modes: {
 			IMM: [0xC6, 2, 2],
@@ -1345,6 +1373,7 @@ opcodes68HC11 = {
 		}
 	},
 	"LDD": {
+    hint: "Load one byte of data into accumulator A, and the next into accumulator B.",
 		macro: "LDD",
 		modes: {
 			IMM: [0xCC, 3, 3],
@@ -1365,6 +1394,7 @@ opcodes68HC11 = {
 		}
 	},
 	"LDS": {
+    hint: "Load two bytes of data into the stack pointer.",
 		macro: "LDS",
 		modes: {
 			IMM: [0x8E, 3, 3],
@@ -1385,7 +1415,7 @@ opcodes68HC11 = {
 		}
 	},
 	"LDX": {
-    hint: "Load data into accumulator X.",
+    hint: "Load two bytes into accumulator X.",
 		macro: "LDX",
 		modes: {
 			IMM: [0xCE, 3, 3],
@@ -1406,6 +1436,7 @@ opcodes68HC11 = {
 		}
 	},
 	"LDY": {
+    hint: "Load two bytes into accumulator Y.",
 		macro: "LDY",
 		modes: {
 			IMM: [0x18CE, 4, 4],
@@ -1558,6 +1589,7 @@ opcodes68HC11 = {
 		}
 	},
 	"MUL": {
+    hint: "Multiply A and B, storing the result as a two-byte number in both of them (accumulator D).",
 		macro: "MUL",
 		modes: {
 			INH: [0x3D, 1, 10]
@@ -1624,6 +1656,7 @@ opcodes68HC11 = {
 		}
 	},
 	"NOP": {
+    hint: "Do literally nothing. Just burn two cycles. What a waste.",
 		macro: "NOP",
 		modes: {
 			INH: [0x1, 1, 2]
@@ -1680,6 +1713,7 @@ opcodes68HC11 = {
 		}
 	},
 	"PSHA": {
+    hint: "Push the value in A onto the stack. Decrements SP by one.",
 		macro: "PSHA",
 		modes: {
 			INH: [0x36, 1, 3]
@@ -1696,6 +1730,7 @@ opcodes68HC11 = {
 		}
 	},
 	"PSHB": {
+    hint: "Push the value of B onto the stack. Decrements SP by one.",
 		macro: "PSHB",
 		modes: {
 			INH: [0x37, 1, 3]
@@ -1712,6 +1747,7 @@ opcodes68HC11 = {
 		}
 	},
 	"PSHX": {
+    hint: "Push the value of X onto the stack. Decrements SP by two.",
 		macro: "PSHX",
 		modes: {
 			INH: [0x3C, 1, 4]
@@ -1728,6 +1764,7 @@ opcodes68HC11 = {
 		}
 	},
 	"PSHY": {
+    hint: "Push the value of Y onto the stack. Decrements SP by two.",
 		macro: "PSHY",
 		modes: {
 			INH: [0x183C, 2, 5]
@@ -1744,6 +1781,7 @@ opcodes68HC11 = {
 		}
 	},
 	"PULA": {
+    hint: "Pull a byte from the stack into A. Increments SP by one.",
 		macro: "PULA",
 		modes: {
 			INH: [0x32, 1, 4]
@@ -1760,6 +1798,7 @@ opcodes68HC11 = {
 		}
 	},
 	"PULB": {
+    hint: "Pull a byte from the stack into B. Increments SP by one.",
 		macro: "PULB",
 		modes: {
 			INH: [0x33, 1, 4]
@@ -1776,6 +1815,7 @@ opcodes68HC11 = {
 		}
 	},
 	"PULX": {
+    hint: "Pull two bytes from the stack into X. Increments SP by two.",
 		macro: "PULX",
 		modes: {
 			INH: [0x38, 1, 5]
@@ -1792,6 +1832,7 @@ opcodes68HC11 = {
 		}
 	},
 	"PULY": {
+    hint: "Pull two bytes from the stack into Y. Increments SP by two.",
 		macro: "PULY",
 		modes: {
 			INH: [0x1838, 2, 6]
@@ -1908,6 +1949,7 @@ opcodes68HC11 = {
 		}
 	},
 	"RTI": {
+    hint: "End (return from) an interrupt.",
 		macro: "RTI",
 		modes: {
 			INH: [0x3B, 1, 12]
@@ -1924,6 +1966,7 @@ opcodes68HC11 = {
 		}
 	},
 	"RTS": {
+    hint: "End (return from) a subroutine)",
 		macro: "RTS",
 		modes: {
 			INH: [0x39, 1, 5]
@@ -2012,6 +2055,7 @@ opcodes68HC11 = {
 		}
 	},
 	"SEI": {
+    hint: "Set the interrupt mask.",
 		macro: "SEI",
 		modes: {
 			INH: [0x0F, 1, 2]
@@ -2044,6 +2088,7 @@ opcodes68HC11 = {
 		}
 	},
 	"STAA": {
+    hint: "Store the value of accumulator A in memory.",
 		macro: "STAA",
 		modes: {
 			DIR: [0x97, 2, 3],
@@ -2063,6 +2108,7 @@ opcodes68HC11 = {
 		}
 	},
 	"STAB": {
+    hint: "Store the value of accumulator B in memory.",
 		macro: "STAB",
 		modes: {
 			DIR: [0xD7, 2, 3],
@@ -2082,6 +2128,7 @@ opcodes68HC11 = {
 		}
 	},
 	"STD": {
+    hint: "Store the value of accumulator A in byte of memory, and the value of accumulator B in the next byte.",
 		macro: "STD",
 		modes: {
 			DIR: [0xDD, 2, 4],
@@ -2101,6 +2148,7 @@ opcodes68HC11 = {
 		}
 	},
 	"STOP": {
+    hint: "Halt the internal clocks!",
 		macro: "STOP",
 		modes: {
 			INH: [0xCF, 1, 2]
@@ -2117,6 +2165,7 @@ opcodes68HC11 = {
 		}
 	},
 	"STS": {
+    hint: "Store the stack pointer in two bytes of memory.",
 		macro: "STS",
 		modes: {
 			DIR: [0x9F, 2, 4],
@@ -2136,6 +2185,7 @@ opcodes68HC11 = {
 		}
 	},
 	"STX": {
+    hint: "Store the value of accumulator X in two bytes of memory.",
 		macro: "STX",
 		modes: {
 			DIR: [0xDF, 2, 4],
@@ -2155,6 +2205,7 @@ opcodes68HC11 = {
 		}
 	},
 	"STY": {
+    hint: "Store the value of accumulator Y in two bytes of memory.",
 		macro: "STY",
 		modes: {
 			DIR: [0x18DF, 3, 5],
@@ -2174,6 +2225,7 @@ opcodes68HC11 = {
 		}
 	},
 	"SUBA": {
+    hint: "Subtract a value in memory from A.",
 		macro: "SUBA",
 		modes: {
 			IMM: [0x80, 2, 2],
@@ -2194,6 +2246,7 @@ opcodes68HC11 = {
 		}
 	},
 	"SUBB": {
+    hint: "Subtrace a value in memory from B.",
 		macro: "SUBB",
 		modes: {
 			IMM: [0xC0, 2, 2],
@@ -2214,6 +2267,7 @@ opcodes68HC11 = {
 		}
 	},
 	"SUBD": {
+    hint: "Subtract a two-byte value in memory from accumulator D.",
 		macro: "SUBD",
 		modes: {
 			IMM: [0x83, 3, 4],
@@ -2250,6 +2304,7 @@ opcodes68HC11 = {
 		}
 	},
 	"TAB": {
+    hint: "Transfer the value in accumulator A to accumulator B.",
 		macro: "TAB",
 		modes: {
 			INH: [0x16, 1, 2]
@@ -2282,6 +2337,7 @@ opcodes68HC11 = {
 		}
 	},
 	"TBA": {
+    hint: "Transfer the value in accumulator B to accumulator A.",
 		macro: "TBA",
 		modes: {
 			INH: [0x17, 1, 2]
