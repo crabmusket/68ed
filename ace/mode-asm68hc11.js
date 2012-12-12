@@ -123,7 +123,7 @@ var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
 var ASM68HC11HighlightRules = function() {
 
     var keywords = (
-        "org|fcb|fdb|equ"
+        "org|fcb|fdb|equ|fcc"
     );
 
     var builtinConstants = (
@@ -150,17 +150,10 @@ var ASM68HC11HighlightRules = function() {
         "keyword": keywords
     }, "identifier");
 
-    var decimalInteger = "(?:(?:[1-9]\\d*)|(?:0))";
-    var hexInteger = "(?:$[\\dA-Fa-f]+)";
-    var binInteger = "(?:%[01]+)";
-    var integer = "(?:" + decimalInteger + "|" + hexInteger + "|" + binInteger + ")";
-
-    var exponent = "(?:[eE][+-]?\\d+)";
-    var fraction = "(?:\\.\\d+)";
-    var intPart = "(?:\\d+)";
-    var pointFloat = "(?:(?:" + intPart + "?" + fraction + ")|(?:" + intPart + "\\.))";
-    var exponentFloat = "(?:(?:" + pointFloat + "|" +  intPart + ")" + exponent + ")";
-    var floatNumber = "(?:" + exponentFloat + "|" + pointFloat + ")";
+    var decimalInteger = "[+-]?[0-9]+";
+    var hexInteger = "\\$[0-9A-Fa-f]+";
+    var binInteger = "%[01]+";
+    //var indexed = "[^\\s]+\\,[xy]";
 
     this.$rules = {
         "start" : [ {
@@ -169,21 +162,24 @@ var ASM68HC11HighlightRules = function() {
         }, {
             token : "string",           // " string
             regex : '"(?:[^\\\\]|\\\\.)*?"'
-        }, {
+        }, /*{
+            token : "constant.indexed", // indexing
+            regex : indexed
+        },*/ {
             token : "constant.numeric", // integer
-            regex : integer
+            regex : decimalInteger
+        }, {
+            token : "constant.numeric", // hex
+            regex : hexInteger
+        }, {
+            token : "constant.numeric", // binary
+            regex : binInteger
         }, {
             token : keywordMapper,
             regex : "[a-zA-Z_$][a-zA-Z0-9_$]*\\b"
         }, {
             token : "keyword.operator",
             regex : "\\+|\\-|\\*|\\*\\*|\\/|\\/\\/|%|<<|>>|&|\\||\\^|~|<|>|<=|=>|==|!=|<>|="
-        }, {
-            token : "paren.lparen",
-            regex : "[\\[\\(\\{]"
-        }, {
-            token : "paren.rparen",
-            regex : "[\\]\\)\\}]"
         }, {
             token : "text",
             regex : "\\s+"
