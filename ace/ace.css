@@ -1,3 +1,3 @@
-.ace_keyword, .ace_function {
+.ace_keyword, .ace_function, .ace_constant {
     pointer-events: auto;
 }
