@@ -23,6 +23,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="blockDetection.js" type="text/javascript"></script>
+    <script src="hints.js" type="text/javascript"></script>
     <script src="opcodes68hc11.js" type="text/javascript"></script>
     <script src="pseudoops68hc11.js" type="text/javascript"></script>
 </head>
@@ -73,76 +74,7 @@ editor.getSession().on("tokenizerUpdate", function() {
     setTimeout(updateBlocks, 0);
 });
 // Hint dialog is hidden until required.
-$("#hint-dialog").toggle();
-
-function setHintDialog(data) {
-    var dialog = $("#hint-dialog");
-    
-    if(data.title)
-        dialog.find("h1").text(data.title).toggle(true);
-    else
-        dialog.find("h1").toggle(false);
-    
-    if(data.subtitle)
-        dialog.find("#desc").text(data.subtitle).toggle(true);
-    else
-        dialog.find("#desc").toggle(false);
-    
-    if(data.text)
-        dialog.find("#hint").text(data.text).toggle(true);
-    else
-        dialog.find("#hint").toggle(false);
-    
-    dialog.css({
-        top: data.pos.top + "px",
-        left: data.pos.left + "px",
-    });
-    
-    return dialog;
-}
-
-$(document).on("mouseenter", ".ace_function", function() {
-    // The oc68hc11 file has keys in uppercase.
-    var op = $(this).text().toUpperCase();
-    // Check for existence.
-    if(op in opcodes68HC11) {
-        var hint = opcodes68HC11[op].hint;
-        // Display hint in popup.
-        if(hint != undefined) {
-            setHintDialog({
-                //title: op,
-                subtitle: "Opcode",
-                text: hint,
-                pos: {
-                    left: $(this).offset().left,
-                    top: $(this).position().top + $(this).height(),
-                },
-            }).toggle(true);
-        }
-    }
-});
-
-$(document).on("mouseenter", ".ace_keyword", function() {
-    var op = $(this).text().toUpperCase();
-    if(op in pseudoops68HC11) {
-        var hint = pseudoops68HC11[op].hint;
-        if(hint != undefined) {
-            setHintDialog({
-                //title: op,
-                subtitle: "Assembler pseudo-op",
-                text: hint,
-                pos: {
-                    left: $(this).offset().left,
-                    top: $(this).position().top + $(this).height(),
-                },
-            }).toggle(true);
-        }
-    }
-});
-
-$(document).on("mouseleave", ".ace_keyword, .ace_function", function() {
-    $("#hint-dialog").toggle(false);
-});
+$("#hint-dialog").toggle(false);
 </script>
 
 </body>

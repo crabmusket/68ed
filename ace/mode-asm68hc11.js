@@ -153,7 +153,8 @@ var ASM68HC11HighlightRules = function() {
     var decimalInteger = "[+-]?[0-9]+";
     var hexInteger = "\\$[0-9A-Fa-f]+";
     var binInteger = "%[01]+";
-    //var indexed = "[^\\s]+\\,[xy]";
+    var indexed = "[^\\s]+\\,[xy]";
+    var immediate = "#[^\\s]+";
 
     this.$rules = {
         "start" : [ {
@@ -162,10 +163,13 @@ var ASM68HC11HighlightRules = function() {
         }, {
             token : "string",           // " string
             regex : '"(?:[^\\\\]|\\\\.)*?"'
-        }, /*{
-            token : "constant.indexed", // indexing
+        }, {
+            token : "constant.numeric.indexed", // indexing
             regex : indexed
-        },*/ {
+        }, {
+            token : "constant.numeric.immediate", // immediate value
+            regex : immediate
+        }, {
             token : "constant.numeric", // integer
             regex : decimalInteger
         }, {
