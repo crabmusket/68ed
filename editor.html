@@ -24,6 +24,7 @@
     <script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="blockDetection.js" type="text/javascript"></script>
     <script src="hints.js" type="text/javascript"></script>
+    <script src="suggestions.js" type="text/javascript"></script>
     <script src="opcodes68hc11.js" type="text/javascript"></script>
     <script src="pseudoops68hc11.js" type="text/javascript"></script>
 </head>
@@ -69,6 +70,7 @@ editor.getSession().setMode("ace/mode/asm68hc11");
 // Update basic block highlighting when the editor changes.
 editor.getSession().on("change", function(e) {
     setTimeout(updateBlocks, 0);
+    provideSuggestions(editor, e);
 });
 editor.getSession().on("tokenizerUpdate", function() {
     setTimeout(updateBlocks, 0);
