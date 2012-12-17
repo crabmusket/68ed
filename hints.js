@@ -1,25 +1,30 @@
 function setHintDialog(data) {
+    if(data == undefined)
+        data = {}
     var dialog = $("#hint-dialog");
     
     if(data.title)
-        dialog.find("h1").text(data.title).toggle(true);
+        dialog.find("h1").html(data.title).toggle(true);
     else
         dialog.find("h1").toggle(false);
     
     if(data.subtitle)
-        dialog.find("#desc").text(data.subtitle).toggle(true);
+        dialog.find("#desc").html(data.subtitle).toggle(true);
     else
         dialog.find("#desc").toggle(false);
     
     if(data.text)
-        dialog.find("#hint").text(data.text).toggle(true);
+        dialog.find("#hint").html(data.text).toggle(true);
     else
         dialog.find("#hint").toggle(false);
     
-    dialog.css({
-        top: data.pos.top + "px",
-        left: data.pos.left + "px",
-    });
+    if(data.pos)
+        dialog.css({
+            top: data.pos.top + "px",
+            left: data.pos.left + "px",
+        }).toggle(true);
+    else
+        dialog.toggle(false);
     
     return dialog;
 }
@@ -40,7 +45,7 @@ $(document).on("mouseenter", ".ace_function", function() {
                     left: $(this).offset().left,
                     top: $(this).position().top + $(this).height(),
                 },
-            }).toggle(true);
+            });
         }
     }
 });
@@ -58,7 +63,7 @@ $(document).on("mouseenter", ".ace_keyword", function() {
                     left: $(this).offset().left,
                     top: $(this).position().top + $(this).height(),
                 },
-            }).toggle(true);
+            });
         }
     } else {
         console.log("Could not find hint for keyword " + op);
@@ -86,7 +91,7 @@ $(document).on("mouseenter", ".ace_constant", function() {
         type = "decimal";
     if(value.charAt(0) == '#') {
         // Immediate value.
-        hint.subtitle = "Immediate " + type + " number";
+        hint.subtitle = "Immediate " + type + " constant";
         hint.text = "The literal value will be used.";
     } else if(value.indexOf(',') != -1) {
         // Indexed value?
@@ -99,9 +104,9 @@ $(document).on("mouseenter", ".ace_constant", function() {
         hint.subtitle = type.charAt(0).toUpperCase() + type.slice(1) + " memory address";
         hint.text = "The value in memory at this address will be used.";
     }
-    setHintDialog(hint).toggle(true);
+    setHintDialog(hint);
 });
 
 $(document).on("mouseleave", ".ace_keyword, .ace_function, .ace_constant", function() {
-    $("#hint-dialog").toggle(false);
+    setHintDialog();
 });
