@@ -4,17 +4,17 @@ function setHintDialog(data) {
     var dialog = $("#hint-dialog");
     
     if(data.title)
-        dialog.find("h1").text(data.title).toggle(true);
+        dialog.find("h1").html(data.title).toggle(true);
     else
         dialog.find("h1").toggle(false);
     
     if(data.subtitle)
-        dialog.find("#desc").text(data.subtitle).toggle(true);
+        dialog.find("#desc").html(data.subtitle).toggle(true);
     else
         dialog.find("#desc").toggle(false);
     
     if(data.text)
-        dialog.find("#hint").text(data.text).toggle(true);
+        dialog.find("#hint").html(data.text).toggle(true);
     else
         dialog.find("#hint").toggle(false);
     
